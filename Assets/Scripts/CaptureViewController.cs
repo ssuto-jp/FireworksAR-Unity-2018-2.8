@@ -29,10 +29,10 @@ public class CaptureViewController : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        LoadScene();
+        NextToScene();
     }
 
-    public void LoadScene()
+    public void NextToScene()
     {
         SceneManager.LoadScene("SaveViewScene");
     }

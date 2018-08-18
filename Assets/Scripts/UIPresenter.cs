@@ -10,6 +10,7 @@ public class UIPresenter : MonoBehaviour
     [SerializeField] private Button markerlessStartButton;
 
     [SerializeField] private Button saveButton;
+    [SerializeField] private Button shareButton;
 
     private CaptureViewController captureViewController;
     private SaveViewController saveViewController;
@@ -25,22 +26,28 @@ public class UIPresenter : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "CaptureViewScene")
         {
             captureButton.OnClickAsObservable()
-            .Subscribe(_ =>
-            {
-                Debug.Log("capture");
-                captureViewController.CaptureTapped();
-            });
+                 .Subscribe(_ =>
+                 {
+                     Debug.Log("capture");
+                     captureViewController.CaptureTapped();
+                 });
         }
 
         if (SceneManager.GetActiveScene().name == "SaveViewScene")
         {
             saveButton.OnClickAsObservable()
-        .Subscribe(_ =>
-        {
-            Debug.Log("save");
-            saveViewController.SaveTapped();
-        });
-        }
+                .Subscribe(_ =>
+                {
+                    Debug.Log("save");
+                    saveViewController.SaveTapped();
+                });
 
+            shareButton.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    Debug.Log("share");
+                    saveViewController.ShareTapped();
+                });
+        }
     }
 }
