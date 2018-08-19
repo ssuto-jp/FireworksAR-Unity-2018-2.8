@@ -9,6 +9,7 @@ public class UIPresenter : MonoBehaviour
     [SerializeField] private Button captureButton;
     [SerializeField] private Button markerlessStartButton;
 
+    [SerializeField] private Button backButton;
     [SerializeField] private Button saveButton;
     [SerializeField] private Button shareButton;
 
@@ -35,6 +36,13 @@ public class UIPresenter : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "SaveViewScene")
         {
+            backButton.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    Debug.Log("back");
+                    saveViewController.BackTapped();
+                });
+
             saveButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {

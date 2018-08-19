@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -14,9 +15,18 @@ public class SaveViewController : MonoBehaviour
 
     public void SaveTapped()
     {
+        StartCoroutine("SaveTappedCoroutine");
+    }
+
+    private IEnumerator SaveTappedCoroutine()
+    {
         string timeStamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
         string fileName = timeStamp + ".png";
         NativeGallery.SaveImageToGallery(CaptureViewController.PhotoTexture, "FireworkAR", fileName);
+
+        yield return new WaitForEndOfFrame();
+
+        BackToScene();
     }
 
     public void ShareTapped()
@@ -28,7 +38,7 @@ public class SaveViewController : MonoBehaviour
 
     public void BackTapped()
     {
-        //
+        BackToScene();
     }
 
     private void BackToScene()
