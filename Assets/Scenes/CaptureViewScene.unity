@@ -582,7 +582,6 @@ GameObject:
   - component: {fileID: 903587792}
   - component: {fileID: 903587795}
   - component: {fileID: 903587794}
-  - component: {fileID: 903587793}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -604,18 +603,6 @@ Transform:
   m_Father: {fileID: 1559354864}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &903587793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 11476864, guid: b7edadf2deecd44cb98357f73c603b2a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 903587791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &903587794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,6 +1304,7 @@ MonoBehaviour:
   captureButton: {fileID: 1825878623}
   markerlessStartButton: {fileID: 410180931}
   closeButton: {fileID: 1936426072}
+  fireworkButton: {fileID: 171944431}
   backButton: {fileID: 0}
   saveButton: {fileID: 0}
   shareButton: {fileID: 0}
@@ -1333,6 +1321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 218543521}
   selectPanel: {fileID: 1346623881}
+  _kudanTracker: {fileID: 1837871890}
+  _markerlessTracking: {fileID: 58032914}
 --- !u!1 &1619487736
 GameObject:
   m_ObjectHideFlags: 0

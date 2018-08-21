@@ -2,49 +2,75 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CaptureViewController : MonoBehaviour
+namespace Kudan.AR.Samples
 {
-    [SerializeField] private GameObject button;
-    [SerializeField] private GameObject selectPanel;
-
-    private static Texture2D _photoTexture;
-    public static Texture2D PhotoTexture
+    public class CaptureViewController : MonoBehaviour
     {
-        get { return _photoTexture; }
-    }
+        [SerializeField] private GameObject button;
+        [SerializeField] private GameObject selectPanel;
+        [SerializeField] private KudanTracker _kudanTracker;
+        [SerializeField] private TrackingMethodMarkerless _markerlessTracking;
 
-    public void CaptureTapped()
-    {
-        StartCoroutine("CaptureTappedCoroutine");
-    }
+        private static Texture2D _photoTexture;
+        public static Texture2D PhotoTexture
+        {
+            get { return _photoTexture; }
+        }
 
-    private IEnumerator CaptureTappedCoroutine()
-    {
-        button.SetActive(false);
+        public void CaptureTapped()
+        {
+            StartCoroutine("CaptureTappedCoroutine");
+        }
 
-        yield return new WaitForEndOfFrame();
+        private IEnumerator CaptureTappedCoroutine()
+        {
+            button.SetActive(false);
 
-        _photoTexture = new Texture2D(Screen.width, Screen.height);
-        _photoTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-        _photoTexture.Apply();
+            yield return new WaitForEndOfFrame();
 
-        yield return new WaitForEndOfFrame();
+            _photoTexture = new Texture2D(Screen.width, Screen.height);
+            _photoTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            _photoTexture.Apply();
 
-        NextToScene();
-    }
+            yield return new WaitForEndOfFrame();
 
-    public void SelectTapped()
-    {
-        selectPanel.SetActive(true);
-    }
+            NextToScene();
+        }
 
-    public void CloseSelectPanel()
-    {
-        selectPanel.SetActive(false);
-    }
+        public void SelectTapped()
+        {
+            selectPanel.SetActive(true);
+        }
 
-    public void NextToScene()
-    {
-        SceneManager.LoadScene("SaveViewScene");
+        public void CloseSelectPanel()
+        {
+            selectPanel.SetActive(false);
+        }
+
+        public void FireworkTapped()
+        {
+            _kudanTracker.ChangeTrackingMethod(_markerlessTracking);
+        }
+
+        public void MarkerlessStartTapped()
+        {
+            if (!_kudanTracker.ArbiTrackIsTracking())
+            {
+                Vector3 floorPosition;
+                Quaternion floorOrientation;
+
+                _kudanTracker.FloorPlaceGetPose(out floorPosition, out floorOrientation);
+                _kudanTracker.ArbiTrackStart(floorPosition, floorOrientation);
+            }
+            else
+            {
+                _kudanTracker.ArbiTrackStop();
+            }
+        }
+
+        public void NextToScene()
+        {
+            SceneManager.LoadScene("SaveViewScene");
+        }
     }
 }

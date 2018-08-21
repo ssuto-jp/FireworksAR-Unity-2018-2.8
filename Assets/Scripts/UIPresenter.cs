@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UniRx;
+using Kudan.AR.Samples;
 
 public class UIPresenter : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class UIPresenter : MonoBehaviour
     [SerializeField] private Button captureButton;
     [SerializeField] private Button markerlessStartButton;
     [SerializeField] private Button closeButton;
+    [SerializeField] private Button fireworkButton;
 
     [SerializeField] private Button backButton;
     [SerializeField] private Button saveButton;
@@ -47,6 +49,20 @@ public class UIPresenter : MonoBehaviour
                      Debug.Log("capture");
                      captureViewController.CaptureTapped();
                  });
+
+            markerlessStartButton.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    Debug.Log("markerlessStart");
+                    captureViewController.MarkerlessStartTapped();
+                });
+
+            fireworkButton.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    Debug.Log("firework");
+                    captureViewController.FireworkTapped();
+                });
         }
 
         if (SceneManager.GetActiveScene().name == "SaveViewScene")

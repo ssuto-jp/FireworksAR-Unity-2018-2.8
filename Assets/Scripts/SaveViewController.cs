@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Kudan.AR.Samples;
 
 public class SaveViewController : MonoBehaviour
 {
