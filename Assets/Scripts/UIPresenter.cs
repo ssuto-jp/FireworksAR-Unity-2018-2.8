@@ -8,6 +8,7 @@ public class UIPresenter : MonoBehaviour
     [SerializeField] private Button selectButton;
     [SerializeField] private Button captureButton;
     [SerializeField] private Button markerlessStartButton;
+    [SerializeField] private Button closeButton;
 
     [SerializeField] private Button backButton;
     [SerializeField] private Button saveButton;
@@ -26,6 +27,20 @@ public class UIPresenter : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "CaptureViewScene")
         {
+            selectButton.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    Debug.Log("select");
+                    captureViewController.SelectTapped();
+                });
+
+            closeButton.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    Debug.Log("close");
+                    captureViewController.CloseSelectPanel();
+                });
+
             captureButton.OnClickAsObservable()
                  .Subscribe(_ =>
                  {

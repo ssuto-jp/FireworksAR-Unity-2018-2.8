@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class CaptureViewController : MonoBehaviour
 {
     [SerializeField] private GameObject button;
+    [SerializeField] private GameObject selectPanel;
 
     private static Texture2D _photoTexture;
     public static Texture2D PhotoTexture
@@ -30,6 +31,16 @@ public class CaptureViewController : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         NextToScene();
+    }
+
+    public void SelectTapped()
+    {
+        selectPanel.SetActive(true);
+    }
+
+    public void CloseSelectPanel()
+    {
+        selectPanel.SetActive(false);
     }
 
     public void NextToScene()
