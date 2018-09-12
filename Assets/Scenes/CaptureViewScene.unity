@@ -5135,6 +5135,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonType: 1
   text: {fileID: 1365867991}
+  fireworkEffects:
+  - {fileID: 1636572261}
+  - {fileID: 1736426684}
+  - {fileID: 1576414334}
 --- !u!1 &218543521
 GameObject:
   m_ObjectHideFlags: 0
@@ -19552,6 +19556,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1168245935180320, guid: 26c9ef6585e41c44189e9d634fff11e3, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198687726482662978, guid: 26c9ef6585e41c44189e9d634fff11e3,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198161398435205874, guid: 26c9ef6585e41c44189e9d634fff11e3,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198003139134589150, guid: 26c9ef6585e41c44189e9d634fff11e3,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198121455516940466, guid: 26c9ef6585e41c44189e9d634fff11e3,
+        type: 2}
+      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -29635,6 +29659,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonType: 2
   text: {fileID: 1365867991}
+  fireworkEffects:
+  - {fileID: 1636572261}
+  - {fileID: 1736426684}
+  - {fileID: 1576414334}
 --- !u!1 &1447216127
 GameObject:
   m_ObjectHideFlags: 0
@@ -34581,6 +34609,11 @@ Transform:
   m_Father: {fileID: 1658871494}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1636572261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1168245935180320, guid: 26c9ef6585e41c44189e9d634fff11e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 783406041}
 --- !u!1 &1658871493
 GameObject:
   m_ObjectHideFlags: 0
@@ -54217,6 +54250,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonType: 3
   text: {fileID: 1365867991}
+  fireworkEffects:
+  - {fileID: 1636572261}
+  - {fileID: 1736426684}
+  - {fileID: 1576414334}
 --- !u!1 &2121483208
 GameObject:
   m_ObjectHideFlags: 0
