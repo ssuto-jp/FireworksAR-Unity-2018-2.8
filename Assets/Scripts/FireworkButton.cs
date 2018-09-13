@@ -7,7 +7,7 @@ public class FireworkButton : MonoBehaviour
 {
     [SerializeField] private AppState _buttonType;
     [SerializeField] private GameObject[] fireworkEffects;
-    [SerializeField] private Text text;
+    //[SerializeField] private Text text;//debug
 
     private Subject<AppState> _onClickedButton = new Subject<AppState>();
     public IObservable<AppState> OnClickAsObservable
@@ -37,15 +37,15 @@ public class FireworkButton : MonoBehaviour
         switch (state)
         {
             case AppState.Normal:
-                text.text = "Normal";
+                //text.text = "Normal";
                 fireworkEffects[0].SetActive(true);
                 break;
-            case AppState.Star:
-                text.text = "Star";
+            case AppState.Small:
+                //text.text = "Star";
                 fireworkEffects[1].SetActive(true);
                 break;
-            case AppState.Line:
-                text.text = "Line";
+            case AppState.Sector:
+                //text.text = "Sector";
                 fireworkEffects[2].SetActive(true);
                 break;
         }

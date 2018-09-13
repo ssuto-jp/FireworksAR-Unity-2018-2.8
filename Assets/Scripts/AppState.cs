@@ -5,8 +5,8 @@ public enum AppState
 {
     None,
     Normal,
-    Star,
-    Line,
+    Small,
+    Sector,
 }
 
 [Serializable]
