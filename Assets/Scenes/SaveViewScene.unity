@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.56683874, b: 0.56683874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -528,6 +528,8 @@ MonoBehaviour:
   selectButton: {fileID: 0}
   captureButton: {fileID: 0}
   markerlessStartButton: {fileID: 0}
+  closeButton: {fileID: 0}
+  fireworkButton: {fileID: 0}
   backButton: {fileID: 1130442765}
   saveButton: {fileID: 1677661524}
   shareButton: {fileID: 1048601084}
