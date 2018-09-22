@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 namespace Kudan.AR.Samples
@@ -7,6 +8,7 @@ namespace Kudan.AR.Samples
     public class CaptureViewController : MonoBehaviour
     {
         [SerializeField] private GameObject button;
+        [SerializeField] private Button markerlessStartButton;
         [SerializeField] private GameObject selectPanel;
         [SerializeField] private KudanTracker _kudanTracker;
         [SerializeField] private TrackingMethodMarkerless _markerlessTracking;
@@ -61,10 +63,12 @@ namespace Kudan.AR.Samples
 
                 _kudanTracker.FloorPlaceGetPose(out floorPosition, out floorOrientation);
                 _kudanTracker.ArbiTrackStart(floorPosition, floorOrientation);
+                markerlessStartButton.image.color = Color.red;
             }
             else
             {
                 _kudanTracker.ArbiTrackStop();
+                markerlessStartButton.image.color = Color.white;
             }
         }
 

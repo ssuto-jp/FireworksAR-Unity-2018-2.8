@@ -32,35 +32,30 @@ public class UIPresenter : MonoBehaviour
             selectButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("select");
                     captureViewController.SelectTapped();
                 });
 
             closeButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("close");
                     captureViewController.CloseSelectPanel();
                 });
 
             captureButton.OnClickAsObservable()
                  .Subscribe(_ =>
                  {
-                     Debug.Log("capture");
                      captureViewController.CaptureTapped();
                  });
 
             markerlessStartButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("markerlessStart");
                     captureViewController.MarkerlessStartTapped();
                 });
 
             fireworkButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("firework");
                     captureViewController.FireworkTapped();
                 });
         }
@@ -70,21 +65,18 @@ public class UIPresenter : MonoBehaviour
             backButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("back");
                     saveViewController.BackTapped();
                 });
 
             saveButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("save");
                     saveViewController.SaveTapped();
                 });
 
             shareButton.OnClickAsObservable()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("share");
                     saveViewController.ShareTapped();
                 });
         }
