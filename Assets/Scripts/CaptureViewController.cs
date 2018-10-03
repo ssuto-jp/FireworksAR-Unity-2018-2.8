@@ -9,6 +9,7 @@ namespace Kudan.AR.Samples
     {
         [SerializeField] private GameObject button;
         [SerializeField] private GameObject selectPanel;
+        [SerializeField] private Button selectButton;
         [SerializeField] private Button markerlessStartButton;
         [SerializeField] private Text markerlessStartText;
         [SerializeField] private KudanTracker _kudanTracker;
@@ -66,12 +67,14 @@ namespace Kudan.AR.Samples
                 _kudanTracker.ArbiTrackStart(floorPosition, floorOrientation);
                 markerlessStartButton.image.color = Color.red;
                 markerlessStartText.text = "stop";
+                selectButton.interactable = false;
             }
             else
             {
                 _kudanTracker.ArbiTrackStop();
                 markerlessStartButton.image.color = Color.white;
                 markerlessStartText.text = "start";
+                selectButton.interactable = true;
             }
         }
 
