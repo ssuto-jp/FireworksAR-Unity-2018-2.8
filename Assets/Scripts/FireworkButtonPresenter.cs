@@ -27,7 +27,14 @@ public class FireworkButtonPresenter : MonoBehaviour
             button.OnClickAsObservable
                 .Subscribe(buttonType =>
                 {
-                    AppStateManager.Instance.CurrentState.Value = buttonType;
+                    if (AppStateManager.Instance.CurrentState.Value == buttonType)
+                    {
+                        AppStateManager.Instance.CurrentState.Value = AppState.None;
+                    }
+                    else
+                    {
+                        AppStateManager.Instance.CurrentState.Value = buttonType;
+                    }
                 })
                 .AddTo(gameObject);
         }

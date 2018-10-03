@@ -8,8 +8,9 @@ namespace Kudan.AR.Samples
     public class CaptureViewController : MonoBehaviour
     {
         [SerializeField] private GameObject button;
-        [SerializeField] private Button markerlessStartButton;
         [SerializeField] private GameObject selectPanel;
+        [SerializeField] private Button markerlessStartButton;
+        [SerializeField] private Text markerlessStartText;
         [SerializeField] private KudanTracker _kudanTracker;
         [SerializeField] private TrackingMethodMarkerless _markerlessTracking;
 
@@ -21,7 +22,7 @@ namespace Kudan.AR.Samples
 
         public void CaptureTapped()
         {
-            StartCoroutine("CaptureTappedCoroutine");
+            StartCoroutine(CaptureTappedCoroutine());
         }
 
         private IEnumerator CaptureTappedCoroutine()
@@ -64,17 +65,32 @@ namespace Kudan.AR.Samples
                 _kudanTracker.FloorPlaceGetPose(out floorPosition, out floorOrientation);
                 _kudanTracker.ArbiTrackStart(floorPosition, floorOrientation);
                 markerlessStartButton.image.color = Color.red;
+                markerlessStartText.text = "stop";
             }
             else
             {
                 _kudanTracker.ArbiTrackStop();
                 markerlessStartButton.image.color = Color.white;
+                markerlessStartText.text = "start";
             }
+        }
+
+        public void MarkerlessStartEnable()
+        {
+            markerlessStartButton.interactable = true;
+            markerlessStartText.text = "start";
+        }
+
+        public void MarkerlessStartDisable()
+        {
+            markerlessStartButton.interactable = false;
+            markerlessStartText.text = "";
         }
 
         public void NextToScene()
         {
-            SceneManager.LoadScene("SaveViewScene");
+            var scene = "SaveViewScene";
+            SceneManager.LoadScene(scene);
         }
     }
 }
