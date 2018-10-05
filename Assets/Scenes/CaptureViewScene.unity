@@ -5134,6 +5134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac5c1948412eaf4b902cd372c29ac0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveViewGroup: {fileID: 603586470}
 --- !u!114 &140178899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10313,6 +10314,7 @@ GameObject:
   - component: {fileID: 603586468}
   - component: {fileID: 603586467}
   - component: {fileID: 603586466}
+  - component: {fileID: 603586470}
   m_Layer: 5
   m_Name: SaveView
   m_TagString: Untagged
@@ -10399,6 +10401,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &603586470
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 603586465}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &623786849
 GameObject:
   m_ObjectHideFlags: 0

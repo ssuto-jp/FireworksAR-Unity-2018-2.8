@@ -6,13 +6,19 @@ using Kudan.AR.Samples;
 
 public class SaveViewController : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup saveViewGroup;
+
     public void SaveTapped()
     {
-        StartCoroutine("SaveTappedCoroutine");
+        StartCoroutine(SaveTappedCoroutine());
     }
 
     private IEnumerator SaveTappedCoroutine()
     {
+        saveViewGroup.interactable = false;
+
+        yield return null;
+
         string timeStamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
         string fileName = timeStamp + ".png";
         NativeGallery.SaveImageToGallery(CaptureViewController.PhotoTexture, "FireworkAR", fileName);
@@ -20,6 +26,7 @@ public class SaveViewController : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         ViewChanger.Instance.ChangeView();
+        saveViewGroup.interactable = true;
     }
 
     public void ShareTapped()
@@ -33,6 +40,7 @@ public class SaveViewController : MonoBehaviour
         string fileName = timeStamp + ".png";
         string imagePath = Application.persistentDataPath + "/" + fileName;
         ScreenCapture.CaptureScreenshot(fileName);
+        saveViewGroup.interactable = false;
 
         while (true)
         {
@@ -43,6 +51,7 @@ public class SaveViewController : MonoBehaviour
         var text = "#FireworkAR";
         var url = "";
         SocialConnector.SocialConnector.Share(text, url, imagePath);
+        saveViewGroup.interactable = true;
     }
 
     public void BackTapped()
