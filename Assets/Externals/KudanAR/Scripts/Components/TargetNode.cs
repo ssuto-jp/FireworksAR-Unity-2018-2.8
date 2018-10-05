@@ -39,6 +39,10 @@ namespace Kudan.AR
 			{
 				target.gameObject.SetActive (true);
 			}
+            if(AppStateManager.Instance.CurrentState.Value == AppState.None)
+            {
+                target.gameObject.SetActive(false);
+            }
 
 			if (target.gameObject.activeSelf) 
 			{
