@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UniRx;
 using Kudan.AR.Samples;
 
@@ -26,44 +25,40 @@ public class UIPresenter : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "CaptureViewScene")
+        //CaptureView
+        selectButton.OnClickAsObservable()
+            .Subscribe(_ => captureViewController.SelectTapped());
+
+        closeButton.OnClickAsObservable()
+            .Subscribe(_ => captureViewController.CloseSelectPanel());
+
+        captureButton.OnClickAsObservable()
+             .Subscribe(_ => captureViewController.CaptureTapped());
+
+        markerlessStartButton.OnClickAsObservable()
+            .Subscribe(_ => captureViewController.MarkerlessStartTapped());
+
+        AppStateManager.Instance.CurrentState
+        .Subscribe(state =>
         {
-            selectButton.OnClickAsObservable()
-                .Subscribe(_ => captureViewController.SelectTapped());
-
-            closeButton.OnClickAsObservable()
-                .Subscribe(_ => captureViewController.CloseSelectPanel());
-
-            captureButton.OnClickAsObservable()
-                 .Subscribe(_ => captureViewController.CaptureTapped());
-
-            markerlessStartButton.OnClickAsObservable()
-                .Subscribe(_ => captureViewController.MarkerlessStartTapped());
-
-            AppStateManager.Instance.CurrentState
-            .Subscribe(state =>
+            if (state == AppState.None)
             {
-                if (state == AppState.None)
-                {
-                    captureViewController.MarkerlessStartDisable();
-                }
-                else
-                {
-                    captureViewController.MarkerlessStartEnable();
-                }
-            });
-        }
+                captureViewController.MarkerlessStartDisable();
+            }
+            else
+            {
+                captureViewController.MarkerlessStartEnable();
+            }
+        });
 
-        if (SceneManager.GetActiveScene().name == "SaveViewScene")
-        {
-            backButton.OnClickAsObservable()
-                .Subscribe(_ => saveViewController.BackTapped());
+        //SaveView
+        backButton.OnClickAsObservable()
+            .Subscribe(_ => saveViewController.BackTapped());
 
-            saveButton.OnClickAsObservable()
-                .Subscribe(_ => saveViewController.SaveTapped());
+        saveButton.OnClickAsObservable()
+            .Subscribe(_ => saveViewController.SaveTapped());
 
-            shareButton.OnClickAsObservable()
-                .Subscribe(_ => saveViewController.ShareTapped());
-        }
+        shareButton.OnClickAsObservable()
+            .Subscribe(_ => saveViewController.ShareTapped());
     }
 }

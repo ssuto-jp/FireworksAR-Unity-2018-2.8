@@ -2,19 +2,10 @@
 using System.Collections;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using Kudan.AR.Samples;
 
 public class SaveViewController : MonoBehaviour
 {
-    [SerializeField] private RawImage photoImage;
-
-    private void Start()
-    {
-        photoImage.texture = CaptureViewController.PhotoTexture;
-    }
-
     public void SaveTapped()
     {
         StartCoroutine("SaveTappedCoroutine");
@@ -28,7 +19,7 @@ public class SaveViewController : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        BackToScene();
+        ViewChanger.Instance.ChangeView();
     }
 
     public void ShareTapped()
@@ -56,11 +47,6 @@ public class SaveViewController : MonoBehaviour
 
     public void BackTapped()
     {
-        BackToScene();
-    }
-
-    private void BackToScene()
-    {
-        SceneManager.LoadScene("CaptureViewScene");
+        ViewChanger.Instance.ChangeView();
     }
 }

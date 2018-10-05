@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 namespace Kudan.AR.Samples
 {
@@ -12,6 +11,7 @@ namespace Kudan.AR.Samples
         [SerializeField] private Button selectButton;
         [SerializeField] private Button markerlessStartButton;
         [SerializeField] private Text markerlessStartText;
+        [SerializeField] private RawImage photoImage;
         [SerializeField] private KudanTracker _kudanTracker;
         [SerializeField] private TrackingMethodMarkerless _markerlessTracking;
 
@@ -36,9 +36,11 @@ namespace Kudan.AR.Samples
             _photoTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
             _photoTexture.Apply();
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
 
-            NextToScene();
+            ViewChanger.Instance.ChangeView();
+            photoImage.texture = PhotoTexture;
+            button.SetActive(true);
         }
 
         public void SelectTapped()
@@ -88,12 +90,6 @@ namespace Kudan.AR.Samples
         {
             markerlessStartButton.interactable = false;
             markerlessStartText.text = "";
-        }
-
-        public void NextToScene()
-        {
-            var scene = "SaveViewScene";
-            SceneManager.LoadScene(scene);
         }
     }
 }
