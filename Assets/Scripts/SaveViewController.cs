@@ -2,11 +2,13 @@
 using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using Kudan.AR.Samples;
 
 public class SaveViewController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup saveViewGroup;
+    [SerializeField] private Text saveText;
 
     public void SaveTapped()
     {
@@ -16,6 +18,7 @@ public class SaveViewController : MonoBehaviour
     private IEnumerator SaveTappedCoroutine()
     {
         saveViewGroup.interactable = false;
+        saveText.text = "Saving...";
 
         yield return null;
 
@@ -25,8 +28,9 @@ public class SaveViewController : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        ViewChanger.Instance.ChangeView();
         saveViewGroup.interactable = true;
+        saveText.text = "";
+        ViewChanger.Instance.ChangeView();
     }
 
     public void ShareTapped()
